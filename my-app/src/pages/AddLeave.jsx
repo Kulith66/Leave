@@ -30,9 +30,24 @@ const AddLeave = () => {
     }
   };
 
-  // Navigate to the employee's leave details page
-  const handleNavigateAddLeave = () => {
-    navigate(`/OneEmpLeave/${employeeId}`);  // Use navigate to route to the leave details page
+  // Navigate to the employee's leave details page after fetching leave balance
+  const handleNavigateAddLeave = async () => {
+    setLoading(true);  // Start loading when the "View" button is clicked
+    try {
+      // Fetch the detailed leave data for the employee
+      const response = await axios.get(`http://localhost:5000/api/leave/oneEmpAll/${employeeId}`);
+      // If the response is successful, navigate to the leave details page
+      if (response.status === 200) {
+        setLeaveBalance(response.data.data);  // Set leave balance for this employee
+        navigate(`/OneEmpLeave/${employeeId}`);  // Navigate to the leave details page
+      } else {
+        throw new Error('Failed to fetch detailed leave data.');
+      }
+    } catch (err) {
+      setError(err.message);  // Set error message if request fails
+    } finally {
+      setLoading(false);  // Stop loading
+    }
   };
 
   return (

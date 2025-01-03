@@ -5,7 +5,7 @@ import dotenv from "dotenv";
 import cors from 'cors';
 import leaveRoutes from "./routes/leaveRoutes.js";
 import adminLeaveRoutes from "./routes/adminLeaveRoutes.js"; // Ensure this imports the correct routes for adminLeave
-
+import workingRoutes from "./routes/workingRoutes.js";
 dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -38,6 +38,7 @@ app.get("/test", (req, res) => {
 // Define routes
 app.use("/api/leave", leaveRoutes);
 app.use("/api/adminLeave", adminLeaveRoutes); // Fixed missing leading "/"
+app.use("/api/working", workingRoutes);
 
 // Error handling middleware
 app.use((err, req, res, next) => {

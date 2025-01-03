@@ -8,6 +8,9 @@ import LeaveBalance from './pages/LeaveBalance'
 import LeaveView from './pages/LeaveView'
 import OneEmpLeave from './pages/OneEmpLeave'
 import CreateLeave from './pages/CreateLeave'
+import Working from './pages/Working'
+import Charts from './pages/Charts'
+import ChartView from './components/ChartView'
 function App() {
 
   return (
@@ -20,8 +23,13 @@ function App() {
           <Route path='/create-period' element={ <CreateDuration/>}/>
           <Route path='/balance' element={ <LeaveBalance/>}/>
           <Route path='leaveView/:leaveId' element={ <LeaveView/>}/>
-          <Route path='/add/OneEmpLeave/:employeeId' element={ <OneEmpLeave/>}/>
+          <Route path='/OneEmpLeave/:employeeId' element={ <OneEmpLeave/>}/>
           <Route path='/create' element={ <CreateLeave/>}/>
+          <Route path='/working/:employeeId' element={ <Working/>}/>
+          <Route path='/charts' element={ <Charts/>}/>
+          <Route path='/chartView/:employeeId' element={ <ChartView/>}/>
+
+
       </Routes>
     </>
   )

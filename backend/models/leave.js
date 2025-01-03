@@ -42,9 +42,14 @@ const leaveSchema = new mongoose.Schema({
   status: {
     type: String,
     required: true,
-    enum: ['pending', 'approved', 'rejected'], // Include 'pending' as an option
+    enum: ['pending', 'approved', 'rejected','cancelled'], // Include 'pending' as an option
     default: 'pending',
   },
+  paid:{
+    type:Boolean,
+    required: true,
+    default:true,
+  }
 });
 
 // Export the Leave model
